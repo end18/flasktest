@@ -16,9 +16,7 @@ BBC_FEED = "http://feeds.bbci.co.uk/news/rss.xml"
 def get_news(publication='bbc'):
     feed = feedparser.parse(RSS_FEED[publication])
     first_article = feed['entries'][0]
-    return render_template("home.html", title=first_article.get("title"),
-                                        published=first_article.get("published"),
-                                        summary=first_article.get("summary"))
+    return render_template("home.html", articles=feed['entries'])
     
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8080, debug=True)
