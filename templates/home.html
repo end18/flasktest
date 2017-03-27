@@ -4,10 +4,39 @@
     </Head>
     <body>
         <h1>Headlines</h1>
+        <h2>Current Weather</h2>
+        <form>
+            <input type="text" name="city" placeholder="Weather search"/>
+            <input type="submit" value="Submit"/>
+        </form>
+        <p>City: <b>{{weather.city}} , {{weather.country}}</b></p>
+        <p>{{weather.description}} | {{weather.temperature}} C</p>
+        <h2>Currency</h2>
+        1 {{currency_from}} = {{currency_to}} {{rate}}
+        <form>
+            from : <select name="currency_from">
+                        <option value="USD">USD</option>
+                        <option value="KRW">KRW</option>
+                        <option value="GBP">GBP</option>
+                        <option value="EUR">EUR</option>
+                        <option value="ZAR">ZAR</option>
+                   </select>
+           to : <select name="currency_to" >
+                        <option value="USD">USD</option>
+                        <option value="KRW">KRW</option>
+                        <option value="GBP">GBP</option>
+                        <option value="EUR">EUR</option>
+                        <option value="ZAR">ZAR</option>               
+               </select>
+           <input type="submit" name="Submit"/>
+        </form>
+        
+        <h2>Headlines</h2>
         <form action"/" method="POST">
             <input type="text" name="publication" placeholder="search"/>
             <input type="submit" value="Submit"/>
         </form>
+
         {% for article in articles %}
         <b><a href="{{article.link}}"> {{article.title}} </a> </b> <br/>
         <i> {{article.published}} </i> <br/>
