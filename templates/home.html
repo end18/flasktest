@@ -15,18 +15,14 @@
         1 {{currency_from}} = {{currency_to}} {{rate}}
         <form>
             from : <select name="currency_from">
-                        <option value="USD">USD</option>
-                        <option value="KRW">KRW</option>
-                        <option value="GBP">GBP</option>
-                        <option value="EUR">EUR</option>
-                        <option value="ZAR">ZAR</option>
+                        {% for currency in currencies %}
+                        <option value="{{currency}}" {{'selected="selected"' if currency_from==currency}}>{{currency}}</option>
+                        {% endfor %}
                    </select>
            to : <select name="currency_to" >
-                        <option value="USD">USD</option>
-                        <option value="KRW">KRW</option>
-                        <option value="GBP">GBP</option>
-                        <option value="EUR">EUR</option>
-                        <option value="ZAR">ZAR</option>               
+                        {% for currency in currencies %}
+                        <option value="{{currency}}" {{'selected="selected"' if currency_to==currency}}>{{currency}}</option>
+                        {% endfor %}               
                </select>
            <input type="submit" name="Submit"/>
         </form>
